@@ -8,6 +8,7 @@ import sys
 import json
 from ensure import ensure_annotations
 import joblib
+import base64
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> Dict:
@@ -255,5 +256,40 @@ def file_exists(path: Path) -> bool:
     """
     try:
         return os.path.isfile(path)
+    except Exception as e:
+        raise CustomException(e, sys) from e
+    
+@ensure_annotations
+def encode_file_to_base64(path: Path) -> str:
+    """Encodes a file to a base64 string.
+    
+    Args:
+        path (Path): Path to the file.
+    Returns:
+        str: Base64 encoded string of the file contents.
+    Raises:
+        CustomException: If there is an error encoding the file.
+    """
+    try:
+        with open(path, 'rb') as file:
+            encoded_string = base64.b64encode(file.read()).decode('utf-8')
+        return encoded_string
+    except Exception as e:
+        raise CustomException(e, sys) from e
+    
+@ensure_annotations
+def decode_base64_to_file(encoded_string: str, path: Path) -> None:
+    """Decodes a base64 string and writes it to a file.
+    
+    Args:
+        encoded_string (str): Base64 encoded string.
+        path (Path): Path to the file where the decoded content will be written.
+    Raises:
+        CustomException: If there is an error decoding the string or writing the file.
+    """
+    try:
+        with open(path, 'wb') as file:
+            file.write(base64.b64decode(encoded_string))
+        logger.info(f"File decoded from base64 and saved at: {path}")
     except Exception as e:
         raise CustomException(e, sys) from e
