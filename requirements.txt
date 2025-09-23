@@ -3,13 +3,13 @@ numpy
 matplotlib
 seaborn
 tensorflow
-pyYAML
+PyYAML
 tqdm
 scikit-learn
 ensure==1.0.2
 joblib
 scipy
 python-box==6.0.2
-types-pyYAML
+types-PyYAML
 flask
 flask-cors
