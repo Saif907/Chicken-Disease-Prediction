@@ -13,3 +13,4 @@ python-box==6.0.2
 types-PyYAML
 flask
 flask-cors
+ipykernel
