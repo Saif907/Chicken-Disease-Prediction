@@ -11,7 +11,7 @@ def get_requirements(file_path: str) -> List[str]:
             requirements.remove('-e .')
 
 setup(
-    name='deep_learning_project',
+    name='chicken_disease_classification',
     version='0.0.1',
     author='Saif',
     author_email='saif81868@gmail.com',
