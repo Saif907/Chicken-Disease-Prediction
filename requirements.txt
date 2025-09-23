@@ -2,3 +2,14 @@ pandas
 numpy
 matplotlib
 seaborn
+tensorflow
+pyYAML
+tqdm
+scikit-learn
+ensure==1.0.2
+joblib
+scipy
+python-box==6.0.2
+types-pyYAML
+flask
+flask-cors
