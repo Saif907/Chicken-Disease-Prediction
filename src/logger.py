@@ -3,19 +3,19 @@ import os
 from datetime import datetime
 from logging.handlers import TimedRotatingFileHandler
 
-# Create logs directory (always relative to project root)
+# -------------------- Logs folder setup --------------------
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LOGS_DIR = os.path.join(PROJECT_ROOT, "logs")
+LOGS_DIR = os.path.join(PROJECT_ROOT, "artifacts/logs")  # Use artifacts folder for deployment
 os.makedirs(LOGS_DIR, exist_ok=True)
 
-# Daily rotating log file
+# Log file per day
 LOG_FILE = f"{datetime.now().strftime('%Y-%m-%d')}.log"
 LOG_FILE_PATH = os.path.join(LOGS_DIR, LOG_FILE)
 
-# Standard log format (industry style)
+# Standard log format
 LOG_FORMAT = "%(asctime)s | %(levelname)-8s | %(name)s:%(lineno)d | %(message)s"
 
-# Configure logging with file + console handlers
+# -------------------- Logging configuration --------------------
 logging.basicConfig(
     level=logging.INFO,
     format=LOG_FORMAT,

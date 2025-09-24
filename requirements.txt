@@ -14,3 +14,4 @@ types-PyYAML
 flask
 flask-cors
 ipykernel
+keras

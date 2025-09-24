@@ -26,7 +26,7 @@ def read_yaml(path_to_yaml: Path) -> Dict:
             content = yaml.safe_load(yaml_file)
         return content
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
 
 @ensure_annotations
 def write_yaml(path_to_yaml: Path, content: Dict) -> None:
@@ -42,7 +42,7 @@ def write_yaml(path_to_yaml: Path, content: Dict) -> None:
         with open(path_to_yaml, 'w') as yaml_file:
             yaml.safe_dump(content, yaml_file)
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
 
 @ensure_annotations
 def create_directories(path_to_directories: list, verbose=True) -> None:
@@ -60,7 +60,7 @@ def create_directories(path_to_directories: list, verbose=True) -> None:
             if verbose:
                 logger.info(f"Directory created at: {path}")
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
     
 @ensure_annotations
 def save_json(path: Path, data: Dict) -> None:
@@ -76,7 +76,7 @@ def save_json(path: Path, data: Dict) -> None:
         with open(path, 'w') as json_file:
             json.dump(data, json_file, indent=4)
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
     
 @ensure_annotations
 def load_json(path: Path) -> Dict:
@@ -94,7 +94,7 @@ def load_json(path: Path) -> Dict:
             data = json.load(json_file)
         return data
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
 
 @ensure_annotations
 def save_object(path: Path, obj: Any) -> None:
@@ -110,7 +110,7 @@ def save_object(path: Path, obj: Any) -> None:
         joblib.dump(obj, path)
         logger.info(f"Object saved at: {path}")
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
 
 @ensure_annotations
 def load_object(path: Path) -> Any:
@@ -128,7 +128,7 @@ def load_object(path: Path) -> Any:
         logger.info(f"Object loaded from: {path}")
         return obj
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
 
 @ensure_annotations
 def get_size(path: Path) -> str:
@@ -145,7 +145,7 @@ def get_size(path: Path) -> str:
         size_in_kb = round(os.path.getsize(path) / 1024, 2)
         return f"{size_in_kb} KB"
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
     
 @ensure_annotations
 def copy_file(source: Path, destination: Path) -> None:
@@ -162,7 +162,7 @@ def copy_file(source: Path, destination: Path) -> None:
         copy2(source, destination)
         logger.info(f"File copied from {source} to {destination}")
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
 
 @ensure_annotations
 def list_files(directory: Path, extension: str = None) -> list:
@@ -187,7 +187,7 @@ def list_files(directory: Path, extension: str = None) -> list:
                     files.append(os.path.join(directory, item))
         return files
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
     
 @ensure_annotations
 def read_file_lines(path: Path) -> list:
@@ -205,7 +205,7 @@ def read_file_lines(path: Path) -> list:
             lines = file.readlines()
         return [line.strip() for line in lines]
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
     
 @ensure_annotations
 def write_file_lines(path: Path, lines: list) -> None:
@@ -223,7 +223,7 @@ def write_file_lines(path: Path, lines: list) -> None:
                 file.write(f"{line}\n")
         logger.info(f"Lines written to file at: {path}")
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
 
 @ensure_annotations
 def append_file_lines(path: Path, lines: list) -> None:
@@ -241,7 +241,7 @@ def append_file_lines(path: Path, lines: list) -> None:
                 file.write(f"{line}\n")
         logger.info(f"Lines appended to file at: {path}")
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
 
 @ensure_annotations
 def file_exists(path: Path) -> bool:
@@ -257,7 +257,7 @@ def file_exists(path: Path) -> bool:
     try:
         return os.path.isfile(path)
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
     
 @ensure_annotations
 def encode_file_to_base64(path: Path) -> str:
@@ -275,7 +275,7 @@ def encode_file_to_base64(path: Path) -> str:
             encoded_string = base64.b64encode(file.read()).decode('utf-8')
         return encoded_string
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e
     
 @ensure_annotations
 def decode_base64_to_file(encoded_string: str, path: Path) -> None:
@@ -292,4 +292,4 @@ def decode_base64_to_file(encoded_string: str, path: Path) -> None:
             file.write(base64.b64decode(encoded_string))
         logger.info(f"File decoded from base64 and saved at: {path}")
     except Exception as e:
-        raise CustomException(e, sys) from e
+        raise CustomException(e) from e

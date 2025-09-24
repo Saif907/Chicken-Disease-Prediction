@@ -1,0 +1,16 @@
+# Image preprocessing
+IMAGE_SIZE: [224, 224]  # VGG16 expects 224x224 input
+BATCH_SIZE: 8            # Smaller batch size due to larger model
+AUGMENTATION: True       # Apply image augmentations
+
+# Training parameters
+EPOCHS: 25
+LEARNING_RATE: 0.0001    # Lower LR recommended for VGG16 fine-tuning
+LOSS_FUNCTION: "categorical_crossentropy"
+OPTIMIZER: "adam"
+METRICS: ["accuracy"]
+
+# Model parameters
+MODEL_BASE: "VGG16"       # Transfer learning model
+DROPOUT_RATE: 0.5          # Higher dropout for regularization
+NUM_CLASSES: 4             # Salmonella, Coccidiosis, Healthy, New Castle Disease
