@@ -1,0 +1,26 @@
+Chicken Disease Prediction/
+│
+├─ config/                # External YAML configs
+│   ├─ config.yaml        # Paths, directories, stage-specific configs
+│   └─ params.yaml        # Hyperparameters for training
+│
+├─ src/
+│   ├─ config/
+│   │   ├─ configuration.py       # Reads YAML files and provides getters
+│   │   └─ test_configuration.py  # Test YAML reading
+│   │
+│   ├─ components/
+│   │   ├─ data_ingestion.py          # Loads raw CSV, splits train/test, saves CSVs
+│   │   ├─ test_data_ingestion.py    # Test ingestion
+│   │   ├─ data_transformation.py    # Preprocesses images, augmentation, tf.data datasets
+│   │   └─ test_data_transformation.py
+│   │
+│   ├─ utils/
+│   │   └─ utils.py                  # YAML/JSON read/write, object save/load, dir creation
+│   │
+│   ├─ logger.py                     # Standardized logging
+│   └─ exception.py                  # CustomException with detailed logging
+│
+├─ artifacts/                         # Saved models, processed data, CSVs
+│
+└─ venv/
